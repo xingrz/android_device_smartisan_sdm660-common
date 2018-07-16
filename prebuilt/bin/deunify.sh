@@ -17,10 +17,10 @@
 
 if [[ $(cat /sys/hwinfo/nfc_support) == "nfc_support=0" ]]; then
   echo "NFC is not supported"
-  rm -f /system/vendor/etc/permissions/android.hardware.nfc.hce.xml
-  rm -f /system/vendor/etc/permissions/android.hardware.nfc.hcef.xml
-  rm -f /system/vendor/etc/permissions/android.hardware.nfc.xml
-  rm -f /system/vendor/etc/permissions/com.android.nfc_extras.xml
-  rm -f /system/vendor/etc/permissions/com.nxp.mifare.xml
-  rm -f /system/vendor/etc/init/vendor.nxp.hardware.nfc@1.1-service.rc
+  rm -f /vendor/etc/permissions/android.hardware.nfc.hce.xml
+  rm -f /vendor/etc/permissions/android.hardware.nfc.hcef.xml
+  rm -f /vendor/etc/permissions/android.hardware.nfc.xml
+  rm -f /vendor/etc/permissions/com.android.nfc_extras.xml
+  rm -f /vendor/etc/permissions/com.nxp.mifare.xml
+  rm -f /vendor/etc/init/vendor.nxp.hardware.nfc@1.1-service.rc
 fi
