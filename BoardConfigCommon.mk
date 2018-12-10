@@ -21,7 +21,7 @@
 # definition file).
 #
 
-DEVICE_PATH := device/smartisan/osborn
+COMMON_PATH := device/smartisan/sdm660-common
 
 # SDClang configuration
 TARGET_USE_SDCLANG := true
@@ -62,11 +62,7 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/smartisan/sdm660
-TARGET_KERNEL_CONFIG := mokee_osborn_defconfig
 TARGET_KERNEL_CLANG_COMPILE := true
-
-# HAX: SELinux Permissive - Remove ASAP
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
@@ -115,7 +111,6 @@ AUDIO_FEATURE_ENABLED_SPLIT_A2DP := true
 AUDIO_FEATURE_ENABLED_RAS := true
 
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 BOARD_HAS_QCA_BT_ROME := true
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
@@ -165,7 +160,7 @@ VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
 SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
 
 # Filesystem
-TARGET_FS_CONFIG_GEN += $(DEVICE_PATH)/config.fs
+TARGET_FS_CONFIG_GEN += $(COMMON_PATH)/config.fs
 
 # GPS
 TARGET_NO_RPC := true
@@ -173,12 +168,12 @@ USE_DEVICE_SPECIFIC_GPS := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 
 # HIDL
-DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
-DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
+DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
+DEVICE_MATRIX_FILE := $(COMMON_PATH)/compatibility_matrix.xml
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_osborn
-TARGET_RECOVERY_DEVICE_MODULES := libinit_osborn
+TARGET_INIT_VENDOR_LIB := libinit_smartisan
+TARGET_RECOVERY_DEVICE_MODULES := libinit_smartisan
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc0/
 
 # Keystore
@@ -189,11 +184,6 @@ TARGET_PROVIDES_LIBLIGHT := true
 
 # Media
 TARGET_USES_MEDIA_EXTENSIONS := true
-
-# NFC
-TARGET_USES_NQ_NFC := true
-BOARD_NFC_CHIPSET := pn553
-BOARD_NFC_HAL_SUFFIX := sdm660
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
@@ -211,14 +201,13 @@ TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USES_INTERACTION_BOOST := true
 
 # Properties
-BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
-TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
+TARGET_SYSTEM_PROP := $(COMMON_PATH)/system.prop
 
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/recovery.fstab
+TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/recovery/root/recovery.fstab
 BOARD_SUPPRESS_EMMC_WIPE := true
 
 # RIL
@@ -226,13 +215,13 @@ TARGET_RIL_VARIANT := caf
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 
 # Releasetools
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_osborn
-TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
+TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_smartisan
+TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 
-BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy
 
 # Timeservice
 BOARD_USES_QC_TIME_SERVICES := true
@@ -252,4 +241,4 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 WIFI_DRIVER_OPERSTATE_PATH := "/sys/class/net/wlan0/operstate"
 
 # inherit from the proprietary version
--include vendor/smartisan/osborn/BoardConfigVendor.mk
+-include vendor/smartisan/sdm660-common/BoardConfigVendor.mk

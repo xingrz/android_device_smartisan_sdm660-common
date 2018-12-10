@@ -22,9 +22,9 @@ LOCAL_C_INCLUDES := \
 
 LOCAL_STATIC_LIBRARIES := libbase
 
-LOCAL_SRC_FILES := init_osborn.cpp
+LOCAL_SRC_FILES := init_smartisan.cpp
 
-LOCAL_MODULE := libinit_osborn
+LOCAL_MODULE := libinit_smartisan
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_STATIC_LIBRARY)
