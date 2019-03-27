@@ -145,9 +145,7 @@ PRODUCT_PACKAGES += \
     camera.sdm660 \
     libmm-qcamera \
     libshim_camera \
-    android.frameworks.displayservice@1.0_32 \
-    android.hardware.camera.provider@2.4-impl:32 \
-    android.hardware.camera.provider@2.4-service
+    android.frameworks.displayservice@1.0_32
 
 PRODUCT_PACKAGES += \
     Snap
@@ -262,10 +260,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.smartisan
 
-# LiveDisplay
-PRODUCT_PACKAGES += \
-    vendor.mokee.livedisplay@2.0-service-sdm
-
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
@@ -320,10 +314,6 @@ PRODUCT_PACKAGES += \
     libOmxVdec \
     libOmxVenc \
     libstagefrighthw
-
-# Power
-PRODUCT_PACKAGES += \
-    android.hardware.power@1.1-service-qti
 
 # QMI
 PRODUCT_PACKAGES += \
